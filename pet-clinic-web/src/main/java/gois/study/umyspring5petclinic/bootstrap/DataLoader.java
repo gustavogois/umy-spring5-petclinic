@@ -4,18 +4,22 @@ import gois.study.umyspring5petclinic.model.Owner;
 import gois.study.umyspring5petclinic.model.Vet;
 import gois.study.umyspring5petclinic.services.OwnerService;
 import gois.study.umyspring5petclinic.services.VetService;
-import gois.study.umyspring5petclinic.services.map.OwnerServiceMap;
-import gois.study.umyspring5petclinic.services.map.VetServiceMap;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 
 public class DataLoader implements CommandLineRunner {
 
-    private final OwnerService ownerService;
-    private final VetService vetService;
+    private OwnerService ownerService;
+    private VetService vetService;
 
+    public DataLoader(OwnerService ownerService, VetService vetService) {
+        this.ownerService = ownerService;
+        this.vetService = vetService;
+    }
+
+
+    @Autowired
     public DataLoader() {
-        ownerService = new OwnerServiceMap();
-        vetService = new VetServiceMap();
     }
 
     @Override

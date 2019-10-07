@@ -2,9 +2,11 @@ package gois.study.umyspring5petclinic.services.map;
 
 import gois.study.umyspring5petclinic.model.Pet;
 import gois.study.umyspring5petclinic.services.PetService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
     @Override
     public Set<Pet> findAll() {
