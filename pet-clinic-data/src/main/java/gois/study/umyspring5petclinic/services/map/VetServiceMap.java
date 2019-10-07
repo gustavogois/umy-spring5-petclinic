@@ -1,11 +1,11 @@
 package gois.study.umyspring5petclinic.services.map;
 
 import gois.study.umyspring5petclinic.model.Vet;
-import gois.study.umyspring5petclinic.services.CrudService;
+import gois.study.umyspring5petclinic.services.VetService;
 
 import java.util.Set;
 
-public class VetServiceMap extends AbstractMapService<Vet, Long> implements CrudService<Vet, Long> {
+public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
     @Override
     public Set<Vet> findAll() {
         return super.findAll();
