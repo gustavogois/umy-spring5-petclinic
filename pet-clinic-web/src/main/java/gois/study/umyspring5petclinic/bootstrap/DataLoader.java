@@ -6,20 +6,19 @@ import gois.study.umyspring5petclinic.services.OwnerService;
 import gois.study.umyspring5petclinic.services.VetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
+@Component
 public class DataLoader implements CommandLineRunner {
 
-    private OwnerService ownerService;
-    private VetService vetService;
-
-    public DataLoader(OwnerService ownerService, VetService vetService) {
-        this.ownerService = ownerService;
-        this.vetService = vetService;
-    }
+    private final OwnerService ownerService;
+    private final VetService vetService;
 
 
     @Autowired
-    public DataLoader() {
+    public DataLoader(OwnerService ownerService, VetService vetService) {
+        this.ownerService = ownerService;
+        this.vetService = vetService;
     }
 
     @Override
