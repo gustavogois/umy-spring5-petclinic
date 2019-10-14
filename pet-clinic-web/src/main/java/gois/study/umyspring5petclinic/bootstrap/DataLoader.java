@@ -1,8 +1,10 @@
 package gois.study.umyspring5petclinic.bootstrap;
 
 import gois.study.umyspring5petclinic.model.Owner;
+import gois.study.umyspring5petclinic.model.PetType;
 import gois.study.umyspring5petclinic.model.Vet;
 import gois.study.umyspring5petclinic.services.OwnerService;
+import gois.study.umyspring5petclinic.services.PetTypeService;
 import gois.study.umyspring5petclinic.services.VetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -13,16 +15,26 @@ public class DataLoader implements CommandLineRunner {
 
     private final OwnerService ownerService;
     private final VetService vetService;
+    private final PetTypeService petTypeService;
 
 
     @Autowired
-    public DataLoader(OwnerService ownerService, VetService vetService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
+        this.petTypeService = petTypeService;
     }
 
     @Override
     public void run(String... args) throws Exception {
+
+        PetType dog = new PetType();
+        dog.setName("Dog");
+        PetType saveDogPetType = petTypeService.save(dog);
+
+        PetType cat = new PetType();
+        cat.setName("Cat");
+        PetType saveCatPetType = petTypeService.save(cat);
 
         Owner owner1 = new Owner();
         owner1.setFirstName("Michael");
