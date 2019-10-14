@@ -1,13 +1,13 @@
 package gois.study.umyspring5petclinic.services.map;
 
 import gois.study.umyspring5petclinic.model.Speciality;
-import gois.study.umyspring5petclinic.services.SpecialitesService;
+import gois.study.umyspring5petclinic.services.SpecialityService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
-public class SpecialityServiceMap extends AbstractMapService<Speciality, Long> implements SpecialitesService {
+public class SpecialityServiceMap extends AbstractMapService<Speciality, Long> implements SpecialityService {
     @Override
     public Set<Speciality> findAll() {
         return super.findAll();
