@@ -1,10 +1,7 @@
 package gois.study.umyspring5petclinic.bootstrap;
 
 import gois.study.umyspring5petclinic.model.*;
-import gois.study.umyspring5petclinic.services.OwnerService;
-import gois.study.umyspring5petclinic.services.PetTypeService;
-import gois.study.umyspring5petclinic.services.SpecialityService;
-import gois.study.umyspring5petclinic.services.VetService;
+import gois.study.umyspring5petclinic.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -18,14 +15,16 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialityService specialityService;
+    private final VisitService visitService;
 
     @Autowired
     public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService,
-                      SpecialityService specialityService) {
+                      SpecialityService specialityService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialityService = specialityService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -93,6 +92,13 @@ public class DataLoader implements CommandLineRunner {
         owner2.getPets().add(fionasCat);
 
         ownerService.save(owner2);
+
+        Visit catVisit = new Visit();
+        catVisit.setPet(fionasCat);
+        catVisit.setDate(LocalDate.now());
+        catVisit.setDescription("Visit of Fiona");
+        visitService.save(catVisit);
+
 
         System.out.println("Loaded Owners ...");
 
