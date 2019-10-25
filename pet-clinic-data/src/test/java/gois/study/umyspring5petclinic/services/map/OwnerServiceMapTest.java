@@ -75,7 +75,7 @@ class OwnerServiceMapTest {
 
         assertNotNull(gois);
 
-        assertEquals(lastName, gois.getLasttName());
+        assertEquals(lastName, gois.getLastName());
     }
 
     @Test
